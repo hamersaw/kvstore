@@ -1,20 +1,8 @@
 # kvstore
 ## Overview
-TODO - channel vs map w/ lock
-
-
-## Decisions
-channel vs map w/ lock or syncmap: channel is more idiomatic golang - removes potential for deadlocks / liveness issues
-
-channel implementation:
-- everything in single request - alternatives are:
-    - channel per request type - can not ensure requests are executed as they come
-    - use internal interface with `isRequest` function so different request types work (similar to protobuf generation) - current use-case is simple, if more complicated should switch to something more verbose
-
-- separate functions for "set" and "update" - arbitrary
-
-- ideas: if slow we can use multiple shards / partitions where key is hashed and separate KVStore handle each shard - in best case, this allows # of concurrent operations equal to number of shards, can use `AtomicInt` to synchronize number of values
-        
+This KVStore implementation contains two approaches to handle concurrent requests within a KVStore,
+namely using a request channel (CSP) and RWMutex to serialize request handling. Both approaches are
+exposed under a RESTful interface.
 
 ## Usage
     # compile
