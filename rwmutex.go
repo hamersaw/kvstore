@@ -71,7 +71,7 @@ func (c *RWMutexKVStore) Update(ctx context.Context, key string, value *string) 
 }
 
 // NewRWMutexKVStore creates a new RWMutexKVStore with the sepcified maximum capacity.
-func NewRWMutexKVStore(ctx context.Context, maxCapacity int) KVStore {
+func NewRWMutexKVStore(ctx context.Context, maxCapacity int) *RWMutexKVStore {
 	return &RWMutexKVStore{
 		maxCapacity: maxCapacity,
 		rwLock:      sync.RWMutex{},

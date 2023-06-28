@@ -102,7 +102,7 @@ func (c *ChannelKVStore) Update(ctx context.Context, key string, value *string) 
 }
 
 // NewChannelKVStore creates a new ChannelKVStore and starts the request handling goroutine.
-func NewChannelKVStore(ctx context.Context, maxSize int) KVStore {
+func NewChannelKVStore(ctx context.Context, maxSize int) *ChannelKVStore {
 	requestChannel := make(chan request)
 	store := make(map[string]*string)
 
