@@ -55,7 +55,7 @@ func (c *RWMutexKVStore) Set(ctx context.Context, key string, value *string) err
 	return nil
 }
 
-// Update updates the value associated with the specified key in the KVStore. This function return
+// Update updates the value associated with the specified key in the KVStore. This function returns
 // ErrNotFound if the key does not exist in the KVStore.
 func (c *RWMutexKVStore) Update(ctx context.Context, key string, value *string) error {
 	c.rwLock.Lock()

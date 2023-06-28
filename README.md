@@ -15,7 +15,7 @@ exposed under a RESTful interface.
     # test REST API
     curl -X POST -d "value=bar" localhost:3000/foo -v
     curl -X GET localhost:3000/foo -v
-    curl -X PUT -d "value=baz" localhost:3000/foo -v
+    curl -X PUT -d '[{"key":"foo","value":"baz"}]' localhost:3000/bulk -v
     curl -X DELETE localhost:3000/foo -v
 
     # perf test
